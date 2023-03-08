@@ -1,1 +1,1 @@
-# lulzbot-taz4-skre3_v2
+# lulzbot-taz4-skr_E3 MINI_v2
