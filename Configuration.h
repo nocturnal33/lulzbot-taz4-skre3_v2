@@ -1324,7 +1324,7 @@
  *      - normally-closed switches to GND and D32.
  *      - normally-open switches to 5V and D32.
  */
-#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default  // Modified
+#define Z_MIN_PROBE_PIN // 32 Pin 32 is the RAMPS default  // Modified
 
 /**
  * Probe Type
@@ -1671,7 +1671,7 @@
 // @section motion
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR true   // Modified
+#define INVERT_X_DIR false   // Modified
 #define INVERT_Y_DIR false  // Modified
 #define INVERT_Z_DIR true   // Modified
 // #define INVERT_X_DIR true
@@ -1908,7 +1908,7 @@
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR 
-#define AUTO_BED_LEVELING_UBL // Modified
+#define AUTO_BED_LEVELING_UBL //Modified
 //#define MESH_BED_LEVELING
 
 /**
