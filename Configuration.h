@@ -172,16 +172,16 @@
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
 
-// #define X_DRIVER_TYPE  TMC2209 // MODIFIED
-// #define Y_DRIVER_TYPE  TMC2209 // MODIFIED
-// #define Z_DRIVER_TYPE  TMC2209 // MODIFIED
-// #define E0_DRIVER_TYPE TMC2209 // MODIFIED
-// #define DIAG_JUMPERS_REMOVED  // MODIFIED
+#define X_DRIVER_TYPE  TMC2209 // MODIFIED
+#define Y_DRIVER_TYPE  TMC2209 // MODIFIED
+#define Z_DRIVER_TYPE  TMC2209 // MODIFIED
+#define E0_DRIVER_TYPE TMC2209 // MODIFIED
+#define DIAG_JUMPERS_REMOVED  // MODIFIED
 
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
+// #define X_DRIVER_TYPE  A4988
+// #define Y_DRIVER_TYPE  A4988
+// #define Z_DRIVER_TYPE  A4988
+// #define E0_DRIVER_TYPE A4988
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -1135,15 +1135,15 @@
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
 #define USE_XMIN_PLUG
 #define USE_YMIN_PLUG
-#define USE_ZMIN_PLUG // MODIFIED - NEED TO DISABLE?
+#define USE_ZMIN_PLUG 
 //#define USE_IMIN_PLUG
 //#define USE_JMIN_PLUG
 //#define USE_KMIN_PLUG
 //#define USE_UMIN_PLUG
 //#define USE_VMIN_PLUG
 //#define USE_WMIN_PLUG
-//#define USE_XMAX_PLUG
-//#define USE_YMAX_PLUG
+#define USE_XMAX_PLUG // MODIFIED
+#define USE_YMAX_PLUG // MODIFIED
 //#define USE_ZMAX_PLUG
 //#define USE_IMAX_PLUG
 //#define USE_JMAX_PLUG
@@ -1156,9 +1156,9 @@
 #define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
   // Disable ENDSTOPPULLUPS to set pullups individually
-  //#define ENDSTOPPULLUP_XMIN
-  //#define ENDSTOPPULLUP_YMIN
-  //#define ENDSTOPPULLUP_ZMIN
+  // #define ENDSTOPPULLUP_XMIN   
+  // #define ENDSTOPPULLUP_YMIN   
+  // #define ENDSTOPPULLUP_ZMIN   
   //#define ENDSTOPPULLUP_IMIN
   //#define ENDSTOPPULLUP_JMIN
   //#define ENDSTOPPULLUP_KMIN
@@ -1174,7 +1174,7 @@
   //#define ENDSTOPPULLUP_UMAX
   //#define ENDSTOPPULLUP_VMAX
   //#define ENDSTOPPULLUP_WMAX
-  //#define ENDSTOPPULLUP_ZMIN_PROBE
+  #define ENDSTOPPULLUP_ZMIN_PROBE  // MODIFIED
 #endif
 
 // Enable pulldown for all endstops to prevent a floating state
@@ -1203,31 +1203,29 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-// #define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-// #define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define U_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define V_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define W_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define X_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  // MODIFIED
-#define Y_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  // MODIFIED
-#define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define I_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define J_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define K_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define I_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define J_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define K_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define U_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define V_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define W_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+#define X_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop. 
+// #define Y_MAX_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.  
+// #define Z_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define I_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define J_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define K_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define U_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define V_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// #define W_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Z_MIN_PROBE_ENDSTOP_INVERTING false // Set to true to invert the logic of the probe.
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-//#define ENDSTOP_INTERRUPTS_FEATURE
+// #define ENDSTOP_INTERRUPTS_FEATURE
 
 /**
  * Endstop Noise Threshold
@@ -1753,9 +1751,9 @@
 // #define INVERT_Y_DIR false  // MODIFIED
 // #define INVERT_Z_DIR true   // MODIFIED
 
-#define INVERT_X_DIR true
-#define INVERT_Y_DIR false
-#define INVERT_Z_DIR true
+#define INVERT_X_DIR true   // MODIFIED 
+#define INVERT_Y_DIR true   // MODIFIED
+#define INVERT_Z_DIR true   // MODIFIED
 //#define INVERT_I_DIR false
 //#define INVERT_J_DIR false
 //#define INVERT_K_DIR false
@@ -1794,7 +1792,7 @@
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
-#define X_HOME_DIR -1
+#define X_HOME_DIR -1  
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 //#define I_HOME_DIR -1
@@ -2323,7 +2321,7 @@
 //#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 #define EEPROM_SETTINGS     // MODIFIED
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
-#define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
+//#define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
   //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
