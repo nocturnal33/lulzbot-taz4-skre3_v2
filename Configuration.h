@@ -2,6 +2,8 @@
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
+ *  ANYTHING THAT HAS BEEN MODIFIED FROM THE DEFAULT SETTINGS HAS BEEN COMMENTED WITH // MODIFIED FOR EASY SEARCHING
+ *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
