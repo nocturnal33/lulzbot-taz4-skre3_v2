@@ -705,13 +705,13 @@
   #if ENABLED(PID_PARAMS_PER_HOTEND)
     // Specify up to one value per hotend here, according to your setup.
     // If there are fewer values, the last one applies to the remaining hotends.
-    #define DEFAULT_Kp_LIST {  22.20,  22.20 }
-    #define DEFAULT_Ki_LIST {   1.08,   1.08 }
-    #define DEFAULT_Kd_LIST { 114.00, 114.00 }
+    #define DEFAULT_Kp_LIST {  23.23,  23.23 }   // MODIFIED - TUNED 3/21/23
+    #define DEFAULT_Ki_LIST {   1.66,   1.66 }
+    #define DEFAULT_Kd_LIST { 81.31, 81.31 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 114.00
+    #define DEFAULT_Kp  23.23 
+    #define DEFAULT_Ki   1.66
+    #define DEFAULT_Kd  81.31
   #endif
 #endif
 
@@ -799,9 +799,10 @@
   // #define DEFAULT_bedKi .023
   // #define DEFAULT_bedKd 305.4
 
-  #define DEFAULT_bedKp 162 // MODIFIED
-  #define DEFAULT_bedKi 17  // MODIFIED
-  #define DEFAULT_bedKd 378 // MODIFIED
+  // PID TUNED 3/22/2023
+  #define DEFAULT_bedKp 50.75 // MODIFIED
+  #define DEFAULT_bedKi 4.50  // MODIFIED
+  #define DEFAULT_bedKd 381.67 // MODIFIED
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1225,7 +1226,7 @@
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-// #define ENDSTOP_INTERRUPTS_FEATURE
+#define ENDSTOP_INTERRUPTS_FEATURE  // MODIFIED
 
 /**
  * Endstop Noise Threshold
@@ -1590,11 +1591,12 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { -26, -1, 0 } // MODIFIED (measured with calipers)
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 30  // MODIFIED
+// #define PROBING_MARGIN 10 // DEFAULT
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (133*60)
@@ -1667,7 +1669,7 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE   10 // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_DEPLOY_PROBE   5 // Z Clearance for Deploy/Stow
 //#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
@@ -1679,7 +1681,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-//#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define Z_MIN_PROBE_REPEATABILITY_TEST  //MODIFIED
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1995,18 +1997,18 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR 
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
-#define AUTO_BED_LEVELING_UBL  // MODIFIED
+//#define MESH_BED_LEVELING   // MODIFIED
+//#define AUTO_BED_LEVELING_UBL  
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-//#define RESTORE_LEVELING_AFTER_G28
-//#define ENABLE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28   
+#define ENABLE_LEVELING_AFTER_G28   // MODIFIED
 
 /**
  * Auto-leveling needs preheating
@@ -2046,7 +2048,7 @@
    */
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 3.0 // (mm) Default fade height.
   #endif
 
   /**
@@ -2321,10 +2323,10 @@
 //#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 #define EEPROM_SETTINGS     // MODIFIED
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
-//#define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
-#define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
-#if ENABLED(EEPROM_SETTINGS)
-  //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+#define EEPROM_CHITCHAT       // MODIFIED - Give feedback on EEPROM commands. Disable to save PROGMEM.
+#define EEPROM_BOOT_SILENT    // MODIFIED - Keep M503 quiet and only give errors during first load
+#if ENABLED(EEPROM_SETTINGS)  
+  #define EEPROM_AUTO_INIT  // MODIFIED - Init EEPROM automatically on any errors.
   //#define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
 #endif
 
@@ -3464,20 +3466,20 @@
 #endif
 
 // Support for Adafruit NeoPixel LED driver
-//#define NEOPIXEL_LED
+// #define NEOPIXEL_LED  // MODIFIED  - OFF BY DEFAULT
 #if ENABLED(NEOPIXEL_LED)
-  #define NEOPIXEL_TYPE          NEO_GRBW // NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
+  #define NEOPIXEL_TYPE   NEO_RBW // MODIFIED - NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
                                           // See https://github.com/adafruit/Adafruit_NeoPixel/blob/master/Adafruit_NeoPixel.h
   //#define NEOPIXEL_PIN                4 // LED driving pin
-  //#define NEOPIXEL2_TYPE  NEOPIXEL_TYPE
-  //#define NEOPIXEL2_PIN               5
+  #define NEOPIXEL2_TYPE  NEOPIXEL_TYPE
+  #define NEOPIXEL2_PIN               5
   #define NEOPIXEL_PIXELS              30 // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
   #define NEOPIXEL_IS_SEQUENTIAL          // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
   #define NEOPIXEL_BRIGHTNESS         127 // Initial brightness (0-255)
-  //#define NEOPIXEL_STARTUP_TEST         // Cycle through colors at startup
+  #define NEOPIXEL_STARTUP_TEST         // MODIFIED - Cycle through colors at startup
 
   // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
-  //#define NEOPIXEL2_SEPARATE
+  #define NEOPIXEL2_SEPARATE // MODIFIED
   #if ENABLED(NEOPIXEL2_SEPARATE)
     #define NEOPIXEL2_PIXELS           15 // Number of LEDs in the second strip
     #define NEOPIXEL2_BRIGHTNESS      127 // Initial brightness (0-255)
