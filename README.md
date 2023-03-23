@@ -9,3 +9,4 @@ All Modified fields are commented `// Modified`
 
 ## ISSUES:
 - Printer starts and then halts 2 minutes after print begings 
+![thermal runaway](https://www.screenpresso.com/cloud/48hMc/)
